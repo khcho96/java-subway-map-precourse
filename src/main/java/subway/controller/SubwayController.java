@@ -7,10 +7,6 @@ import subway.command.main.MainMenuCommandRegistry;
 import subway.command.main.MainMenuOption;
 import subway.command.section.SectionMenuCommandRegistry;
 import subway.command.station.StationMenuCommandRegistry;
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
 import subway.service.SubwayService;
 import subway.util.Retry;
 import subway.view.InputView;
@@ -49,7 +45,7 @@ public class SubwayController {
 
     private MainMenuOption readMainOption() {
         return Retry.retryUntilSuccess(() -> {
-            String selection = InputView.readMenuSelection();
+            String selection = InputView.readMainMenuSelection();
             return MainMenuOption.from(selection);
         });
     }
