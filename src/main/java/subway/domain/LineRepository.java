@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.constant.ErrorMessage;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -13,6 +14,9 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
+        if (lines().contains(line)) {
+            throw new IllegalArgumentException(ErrorMessage.ALREADY_EXIST_LINE.getErrorMessage());
+        }
         lines.add(line);
     }
 
