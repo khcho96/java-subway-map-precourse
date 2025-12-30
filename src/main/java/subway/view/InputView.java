@@ -50,4 +50,9 @@ public class InputView {
         System.out.println("\n## 등록할 역 이름을 입력하세요.");
         return scanner.nextLine();
     }
+
+    public static String readStationForDelete() {
+        System.out.println("\n## 삭제할 역 이름을 입력하세요.");
+        return scanner.nextLine();
+    }
 }

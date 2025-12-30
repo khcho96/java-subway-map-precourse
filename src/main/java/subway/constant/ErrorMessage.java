@@ -10,6 +10,7 @@ public enum ErrorMessage {
     ALREADY_EXIST_STATION("이미 등록된 역 이름입니다."),
     NO_EXIST_STATION("존재하지 않는 역입니다."),
     STATION_FORMAT_ERROR("역 이름은 \"역\"으로 끝나야 합니다."),
+    IMPOSSIBLE_DELETE_STATION("노선에 등록된 역은 삭제할 수 없습니다."),
 
     LINE_NAME_SIZE_ERROR("노선 이름은 2글자 이상이어야 합니다."),
     ALREADY_EXIST_LINE("이미 등록된 노선 이름입니다"),
