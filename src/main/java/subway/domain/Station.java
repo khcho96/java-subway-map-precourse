@@ -3,12 +3,7 @@ package subway.domain;
 import java.util.Objects;
 import subway.constant.ErrorMessage;
 
-public class Station {
-    private final String name;
-
-    public Station(String name) {
-        this.name = name;
-    }
+public record Station(String name) {
 
     public static Station from(String name) {
         validate(name);
@@ -19,10 +14,6 @@ public class Station {
         if (name.length() < 2) {
             throw new IllegalArgumentException(ErrorMessage.STATION_NAME_SIZE_ERROR.getErrorMessage());
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
     // 추가 기능 구현
@@ -36,8 +27,4 @@ public class Station {
         return Objects.equals(name, station.name);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(name);
-    }
 }

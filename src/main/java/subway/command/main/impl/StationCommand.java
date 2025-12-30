@@ -3,8 +3,6 @@ package subway.command.main.impl;
 import subway.command.Command;
 import subway.command.station.StationMenuCommandRegistry;
 import subway.command.station.StationMenuOption;
-import subway.service.SubwayService;
-import subway.util.InputParser;
 import subway.util.Retry;
 import subway.view.InputView;
 

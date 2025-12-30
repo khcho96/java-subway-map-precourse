@@ -3,11 +3,8 @@ package subway.command.main.impl;
 import subway.command.Command;
 import subway.command.line.LineMenuCommandRegistry;
 import subway.command.line.LineMenuOption;
-import subway.command.station.StationMenuOption;
-import subway.service.SubwayService;
 import subway.util.Retry;
 import subway.view.InputView;
-import subway.view.OutputView;
 
 public class LineCommand implements Command {
 

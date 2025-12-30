@@ -1,9 +1,5 @@
 package subway.util;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
 public final class InputParser {
 
     private InputParser() {

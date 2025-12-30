@@ -3,7 +3,6 @@ package subway.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import subway.constant.ErrorMessage;
 
 public class StationRepository {
@@ -30,7 +29,7 @@ public class StationRepository {
 
     public static Station getStation(String stationName) {
         return stations.stream()
-                .filter(station -> station.getName().equals(stationName))
+                .filter(station -> station.name().equals(stationName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NO_EXIST_STATION.getErrorMessage()));
     }

@@ -1,7 +1,6 @@
 package subway.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,9 +87,9 @@ public class RouteRepository {
         Map<String, List<String>> resultRoutes = new LinkedHashMap<>();
         for (Line line : routes.keySet()) {
             List<String> stations = routes.get(line).stream()
-                    .map(Station::getName)
+                    .map(Station::name)
                     .toList();
-            resultRoutes.put(line.getName(), stations);
+            resultRoutes.put(line.name(), stations);
         }
         return resultRoutes;
     }

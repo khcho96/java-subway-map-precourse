@@ -3,12 +3,7 @@ package subway.domain;
 import java.util.Objects;
 import subway.constant.ErrorMessage;
 
-public class Line {
-    private final String name;
-
-    public Line(String name) {
-        this.name = name;
-    }
+public record Line(String name) {
 
     public static Line from(String name) {
         validate(name);
@@ -21,12 +16,6 @@ public class Line {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    // 추가 기능 구현
-
     @Override
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) {
@@ -36,8 +25,4 @@ public class Line {
         return Objects.equals(name, line.name);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(name);
-    }
 }

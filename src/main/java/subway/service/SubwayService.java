@@ -62,13 +62,13 @@ public class SubwayService {
 
     public List<String> getStations() {
         return StationRepository.stations().stream()
-                .map(Station::getName)
+                .map(Station::name)
                 .toList();
     }
 
     public List<String> getLines() {
         return LineRepository.lines().stream()
-                .map(Line::getName)
+                .map(Line::name)
                 .toList();
     }
 

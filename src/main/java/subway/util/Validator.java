@@ -11,14 +11,6 @@ public final class Validator {
     private Validator() {
     }
 
-    public static void validateXxx(String input) {
-        input = input.strip();
-    }
-
-    public static void validateCsvFormat(String input) {
-        input = input.strip();
-    }
-
     public static void validateStationFormat(String station) {
         if (!station.matches(STATION_FORMAT)) {
             throw new IllegalArgumentException(ErrorMessage.STATION_FORMAT_ERROR.getErrorMessage());

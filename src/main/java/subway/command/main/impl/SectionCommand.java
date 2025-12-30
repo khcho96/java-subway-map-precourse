@@ -1,13 +1,10 @@
 package subway.command.main.impl;
 
 import subway.command.Command;
-import subway.command.line.LineMenuOption;
 import subway.command.section.SectionMenuCommandRegistry;
 import subway.command.section.SectionMenuOption;
-import subway.service.SubwayService;
 import subway.util.Retry;
 import subway.view.InputView;
-import subway.view.OutputView;
 
 public class SectionCommand implements Command {
 

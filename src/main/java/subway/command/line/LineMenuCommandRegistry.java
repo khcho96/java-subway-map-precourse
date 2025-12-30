@@ -5,10 +5,6 @@ import subway.command.Command;
 import subway.command.line.impl.LineDeleteCommand;
 import subway.command.line.impl.LineQueryCommand;
 import subway.command.line.impl.LineRegistrationCommand;
-import subway.command.main.impl.LineCommand;
-import subway.command.main.impl.RouteCommand;
-import subway.command.main.impl.SectionCommand;
-import subway.command.main.impl.StationCommand;
 import subway.service.SubwayService;
 
 public class LineMenuCommandRegistry {
