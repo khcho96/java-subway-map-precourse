@@ -26,7 +26,7 @@ public class SubwayService {
             for (String stationName : lines.get(lineName)) {
                 stations.add(StationRepository.getStation(stationName));
             }
-            RouteRepository.addLine(line, stations);
+            RouteRepository.addStations(line, stations);
         }
     }
 
@@ -37,6 +37,20 @@ public class SubwayService {
     public void deleteStation(String stationName) {
         Station station = StationRepository.getStation(stationName);
         StationRepository.deleteStation(station);
+    }
+
+    public Line registerLine(String lineName) {
+        Line line = Line.from(lineName);
+
+        LineRepository.addLine(line);
+        RouteRepository.addLine(line);
+
+        return line;
+    }
+
+    public void registerLineWithStation(Line line, String stationName) {
+        Station station = Station.from(stationName);
+        RouteRepository.addStation(line, station);
     }
 
     // 도메인 객체 인스턴스 변수로 저장
