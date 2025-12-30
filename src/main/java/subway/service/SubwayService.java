@@ -3,6 +3,7 @@ package subway.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import subway.constant.ErrorMessage;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.RouteRepository;
@@ -69,5 +70,21 @@ public class SubwayService {
         return LineRepository.lines().stream()
                 .map(Line::getName)
                 .toList();
+    }
+
+    public Line registerSectionWithLine(String lineName) {
+        return Line.from(lineName);
+    }
+
+    public Station validatePossibleAddStation(Line line, String stationName) {
+        Station station = Station.from(stationName);
+        if (RouteRepository.contains(line, station)) {
+            throw new IllegalArgumentException(ErrorMessage.ALREADY_EXIST_STATION_IN_LINE.getErrorMessage());
+        }
+        return station;
+    }
+
+    public void registerRoute(Line line, Station station, int index) {
+        RouteRepository.addStation(line, station, index);
     }
 }

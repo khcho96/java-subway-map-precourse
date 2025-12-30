@@ -34,6 +34,10 @@ public class RouteRepository {
         return false;
     }
 
+    public static boolean contains(Line line, Station station) {
+        return routes.get(line).contains(station);
+    }
+
     public static void addStation(Line line, Station station) {
         List<Station> stations = routes.get(line);
         if (stations.contains(station)) {
@@ -44,9 +48,15 @@ public class RouteRepository {
 
     public static void addStation(Line line, Station station, int index) {
         List<Station> stations = routes.get(line);
+
+        if (index > stations.size()) {
+            throw new IllegalArgumentException(ErrorMessage.MAX_INDEX_ERROR.getErrorMessage(stations.size()));
+        }
+
         if (stations.contains(station)) {
             throw new IllegalArgumentException(ErrorMessage.ALREADY_EXIST_STATION_IN_LINE.getErrorMessage());
         }
+
         stations.add(index - 1, station);
     }
 

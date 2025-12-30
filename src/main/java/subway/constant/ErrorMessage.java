@@ -16,7 +16,10 @@ public enum ErrorMessage {
     ALREADY_EXIST_LINE("이미 등록된 노선 이름입니다"),
     NO_EXIST_LINE("존재하지 않는 노선입니다."),
     LINE_FORMAT_ERROR("노선 이름은 \"선\"으로 끝나야 합니다."),
-    ALREADY_EXIST_STATION_IN_LINE("해당 노선에 이미 존재하는 역입니다.");
+    ALREADY_EXIST_STATION_IN_LINE("해당 노선에 이미 존재하는 역입니다."), 
+    
+    INDEX_FORMAT_ERROR("1 이상의 숫자를 입력해야합니다."),
+    MAX_INDEX_ERROR("%d 이하의 순서를 입력해야합니다.");
 
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     private final String errorMessage;

@@ -75,4 +75,19 @@ public class InputView {
         System.out.println("\n## 삭제할 노선 이름을 입력하세요.");
         return scanner.nextLine();
     }
+
+    public static String readLineForSectionRegistration() {
+        System.out.println("\n## 노선을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public static String readStationForSectionRegistration() {
+        System.out.println("\n## 역이름을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public static String readIndexForSectionRegistration() {
+        System.out.println("\n## 순서를 입력하세요.");
+        return scanner.nextLine();
+    }
 }

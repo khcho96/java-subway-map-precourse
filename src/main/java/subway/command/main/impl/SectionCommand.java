@@ -1,22 +1,37 @@
 package subway.command.main.impl;
 
 import subway.command.Command;
+import subway.command.line.LineMenuOption;
 import subway.command.section.SectionMenuCommandRegistry;
+import subway.command.section.SectionMenuOption;
 import subway.service.SubwayService;
+import subway.util.Retry;
+import subway.view.InputView;
 import subway.view.OutputView;
 
 public class SectionCommand implements Command {
 
-    private final SubwayService service;
     private final SectionMenuCommandRegistry sectionRegistry;
 
-    public SectionCommand(SubwayService service, SectionMenuCommandRegistry sectionRegistry) {
-        this.service = service;
+    public SectionCommand(SectionMenuCommandRegistry sectionRegistry) {
         this.sectionRegistry = sectionRegistry;
     }
 
     @Override
     public void execute() {
+        SectionMenuOption option = getOption();
 
+        if (option.equals(SectionMenuOption.BACK)) {
+            return;
+        }
+
+        sectionRegistry.execute(option);
+    }
+
+    private static SectionMenuOption getOption() {
+        return Retry.retryUntilSuccess(() -> {
+            String selection = InputView.readSectionMenuSelection();
+            return SectionMenuOption.from(selection);
+        });
     }
 }

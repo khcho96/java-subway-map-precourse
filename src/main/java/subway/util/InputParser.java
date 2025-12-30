@@ -22,4 +22,12 @@ public final class InputParser {
         Validator.validateLineFormat(line);
         return line;
     }
+
+    public static int parseIndex(String readIndex) {
+        readIndex = readIndex.strip();
+
+        Validator.validateIndexFormat(readIndex);
+
+        return NumberConvertor.convertToNumber(readIndex);
+    }
 }

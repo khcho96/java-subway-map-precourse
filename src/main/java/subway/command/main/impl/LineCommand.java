@@ -11,11 +11,9 @@ import subway.view.OutputView;
 
 public class LineCommand implements Command {
 
-    private final SubwayService service;
     private final LineMenuCommandRegistry lineRegistry;
 
-    public LineCommand(SubwayService service, LineMenuCommandRegistry lineRegistry) {
-        this.service = service;
+    public LineCommand(LineMenuCommandRegistry lineRegistry) {
         this.lineRegistry = lineRegistry;
     }
 

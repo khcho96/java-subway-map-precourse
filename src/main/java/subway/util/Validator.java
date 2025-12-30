@@ -30,4 +30,10 @@ public final class Validator {
             throw new IllegalArgumentException(ErrorMessage.LINE_FORMAT_ERROR.getErrorMessage());
         }
     }
+
+    public static void validateIndexFormat(String readIndex) {
+        if (readIndex.matches("0") || !readIndex.matches(NUMBER_FORMAT)) {
+            throw new IllegalArgumentException(ErrorMessage.INDEX_FORMAT_ERROR.getErrorMessage());
+        }
+    }
 }
