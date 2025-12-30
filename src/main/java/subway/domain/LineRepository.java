@@ -21,7 +21,9 @@ public class LineRepository {
     }
 
     public static void deleteLine(Line deletedLine) {
-
-        lines.removeIf(line -> line.equals(deletedLine));
+        if (!lines().contains(deletedLine)) {
+            throw new IllegalArgumentException(ErrorMessage.NO_EXIST_LINE.getErrorMessage());
+        }
+        lines.remove(deletedLine);
     }
 }

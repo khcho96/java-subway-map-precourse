@@ -53,7 +53,21 @@ public class SubwayService {
         RouteRepository.addStation(line, station);
     }
 
-    // 도메인 객체 인스턴스 변수로 저장
+    public void deleteLine(String lineName) {
+        Line line = Line.from(lineName);
+        LineRepository.deleteLine(line);
+        RouteRepository.deleteLine(line);
+    }
 
-    // 메서드
+    public List<String> getStations() {
+        return StationRepository.stations().stream()
+                .map(Station::getName)
+                .toList();
+    }
+
+    public List<String> getLines() {
+        return LineRepository.lines().stream()
+                .map(Line::getName)
+                .toList();
+    }
 }

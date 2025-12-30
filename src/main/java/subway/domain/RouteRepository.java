@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import subway.constant.ErrorMessage;
 
 public class RouteRepository {
@@ -47,5 +48,13 @@ public class RouteRepository {
             throw new IllegalArgumentException(ErrorMessage.ALREADY_EXIST_STATION_IN_LINE.getErrorMessage());
         }
         stations.add(index - 1, station);
+    }
+
+    public static void deleteLine(Line line) {
+        Set<Line> lines = routes.keySet();
+        if (!lines.contains(line)) {
+            throw new IllegalArgumentException(ErrorMessage.NO_EXIST_LINE.getErrorMessage());
+        }
+        routes.remove(line);
     }
 }
