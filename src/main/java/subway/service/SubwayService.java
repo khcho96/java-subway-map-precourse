@@ -26,7 +26,7 @@ public class SubwayService {
             for (String stationName : lines.get(lineName)) {
                 stations.add(StationRepository.getStation(stationName));
             }
-            RouteRepository.addLine(line, stations);
+            RouteRepository.addStations(line, stations);
         }
     }
 
@@ -45,7 +45,15 @@ public class SubwayService {
                 .toList();
     }
 
-    // 도메인 객체 인스턴스 변수로 저장
+    public Line registerLine(String lineName) {
+        Line line = Line.from(lineName);
+        LineRepository.addLine(line);
+        RouteRepository.addLine(line);
+        return line;
+    }
 
-    // 메서드
+    public void registerLineWithStation(Line line, String stationName) {
+        Station station = StationRepository.getStation(stationName);
+        RouteRepository.addStation(line, station);
+    }
 }

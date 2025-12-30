@@ -15,4 +15,11 @@ public final class InputParser {
         Validator.validateStationFormat(station);
         return station;
     }
+
+    public static String parseLine(String line) {
+        line = line.strip();
+
+        Validator.validateLineFormat(line);
+        return line;
+    }
 }
