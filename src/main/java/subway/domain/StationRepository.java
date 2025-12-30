@@ -20,8 +20,12 @@ public class StationRepository {
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    public static void deleteStation(Station deleteStation) {
+        if (RouteRepository.contains(deleteStation)) {
+            throw new IllegalArgumentException(ErrorMessage.IMPOSSIBLE_DELETE_STATION.getErrorMessage());
+        }
+
+        stations.removeIf(station -> station.equals(deleteStation));
     }
 
     public static Station getStation(String stationName) {

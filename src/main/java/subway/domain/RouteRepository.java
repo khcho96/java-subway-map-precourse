@@ -11,4 +11,13 @@ public class RouteRepository {
     public static void addLine(Line line, List<Station> stations) {
         routes.put(line, stations);
     }
+
+    public static boolean contains(Station station) {
+        for (List<Station> value : routes.values()) {
+            if (value.contains(station)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

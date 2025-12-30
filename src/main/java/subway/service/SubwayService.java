@@ -34,6 +34,11 @@ public class SubwayService {
         StationRepository.addStation(Station.from(stationName));
     }
 
+    public void deleteStation(String stationName) {
+        Station station = StationRepository.getStation(stationName);
+        StationRepository.deleteStation(station);
+    }
+
     // 도메인 객체 인스턴스 변수로 저장
 
     // 메서드
