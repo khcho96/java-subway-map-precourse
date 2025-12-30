@@ -1,6 +1,6 @@
 package subway.view;
 
-import subway.constant.Constant;
+import java.util.List;
 
 public class OutputView {
 
@@ -15,8 +15,11 @@ public class OutputView {
         System.out.printf("\n[INFO] %s이 삭제되었습니다.\n", name);
     }
 
-    public static void printStations() {
-
+    public static void printStations(List<String> stations) {
+        System.out.println("\n## 역 목록");
+        for (String station : stations) {
+            System.out.println("[INFO] " + station);
+        }
     }
 
     public static void printLines() {

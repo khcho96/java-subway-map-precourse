@@ -39,6 +39,12 @@ public class SubwayService {
         StationRepository.deleteStation(station);
     }
 
+    public List<String> getStations() {
+        return StationRepository.stations().stream()
+                .map(Station::getName)
+                .toList();
+    }
+
     // 도메인 객체 인스턴스 변수로 저장
 
     // 메서드

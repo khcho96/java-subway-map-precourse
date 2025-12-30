@@ -1,5 +1,6 @@
 package subway.command.station.impl;
 
+import java.util.List;
 import subway.command.Command;
 import subway.service.SubwayService;
 import subway.view.OutputView;
@@ -14,6 +15,8 @@ public class StationQueryCommand implements Command {
 
     @Override
     public void execute() {
+        List<String> stations = service.getStations();
 
+        OutputView.printStations(stations);
     }
 }
