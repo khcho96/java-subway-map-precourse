@@ -6,7 +6,6 @@ import subway.command.line.LineMenuCommandRegistry;
 import subway.command.main.MainMenuCommandRegistry;
 import subway.command.main.MainMenuOption;
 import subway.command.section.SectionMenuCommandRegistry;
-import subway.command.station.StationMenuCommandRegistry;
 import subway.service.SubwayService;
 import subway.util.Retry;
 import subway.view.InputView;
@@ -14,18 +13,10 @@ import subway.view.InputView;
 public class SubwayController {
 
     private final MainMenuCommandRegistry mainRegistry;
-    private final StationMenuCommandRegistry stationRegistry;
-    private final LineMenuCommandRegistry lineRegistry;
-    private final SectionMenuCommandRegistry sectionRegistry;
     private final SubwayService service;
 
-    public SubwayController(MainMenuCommandRegistry mainRegistry, StationMenuCommandRegistry stationRegistry,
-                            LineMenuCommandRegistry lineRegistry, SectionMenuCommandRegistry sectionRegistry,
-                            SubwayService service) {
+    public SubwayController(MainMenuCommandRegistry mainRegistry, SubwayService service) {
         this.mainRegistry = mainRegistry;
-        this.stationRegistry = stationRegistry;
-        this.lineRegistry = lineRegistry;
-        this.sectionRegistry = sectionRegistry;
         this.service = service;
     }
 

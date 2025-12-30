@@ -1,21 +1,19 @@
 package subway.command.main.impl;
 
 import subway.command.Command;
+import subway.command.station.StationMenuCommandRegistry;
 import subway.command.station.StationMenuOption;
 import subway.service.SubwayService;
 import subway.util.InputParser;
 import subway.util.Retry;
 import subway.view.InputView;
-import subway.view.OutputView;
 
 public class StationCommand implements Command {
 
-    private static final String STATION = "지하철 역";
+    private final StationMenuCommandRegistry stationRegistry;
 
-    private final SubwayService service;
-
-    public StationCommand(SubwayService service) {
-        this.service = service;
+    public StationCommand(StationMenuCommandRegistry stationRegistry) {
+        this.stationRegistry = stationRegistry;
     }
 
     @Override
@@ -26,13 +24,7 @@ public class StationCommand implements Command {
             return;
         }
 
-        Retry.retryUntilSuccess(() -> {
-            String readStation = InputView.readStationForRegistration();
-            String stationName =  InputParser.parseStation(readStation);
-            service.registerStation(stationName);
-        });
-
-        OutputView.printRegistration(STATION);
+        stationRegistry.execute(option);
     }
 
     private static StationMenuOption getOption() {
