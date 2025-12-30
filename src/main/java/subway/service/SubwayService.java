@@ -87,4 +87,19 @@ public class SubwayService {
     public void registerRoute(Line line, Station station, int index) {
         RouteRepository.addStation(line, station, index);
     }
+
+    public Line deleteSectionWithLine(String lineName) {
+        Line line = LineRepository.getLine(Line.from(lineName));
+        RouteRepository.validateDeleteLine(line);
+        return line;
+    }
+
+    public void deleteSection(Line line, String stationName) {
+        Station station = Station.from(stationName);
+        RouteRepository.deleteSection(line, station);
+    }
+
+    public Map<String, List<String>> getRoutes() {
+        return RouteRepository.getRoutes();
+    }
 }

@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
@@ -29,8 +30,16 @@ public class OutputView {
         }
     }
 
-    public static void printRoutes() {
-
+    public static void printRoutes(Map<String, List<String>> routes) {
+        System.out.println("\n## 지하철 노선도");
+        for (String line : routes.keySet()) {
+            System.out.println("[INFO] " + line);
+            System.out.println("[INFO] ---");
+            for (String station : routes.get(line)) {
+                System.out.println("[INFO] " + station);
+            }
+            System.out.println();
+        }
     }
 
     public static void printErrorMessage(IllegalArgumentException e) {

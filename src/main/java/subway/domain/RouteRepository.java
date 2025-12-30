@@ -2,6 +2,7 @@ package subway.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -9,7 +10,7 @@ import subway.constant.ErrorMessage;
 
 public class RouteRepository {
 
-    private static final Map<Line, List<Station>> routes = new HashMap<>();
+    private static final Map<Line, List<Station>> routes = new LinkedHashMap<>();
 
     public static void addStations(Line line, List<Station> stations) {
         if (routes.containsKey(line)) {
@@ -66,5 +67,31 @@ public class RouteRepository {
             throw new IllegalArgumentException(ErrorMessage.NO_EXIST_LINE.getErrorMessage());
         }
         routes.remove(line);
+    }
+
+    public static void validateDeleteLine(Line line) {
+        List<Station> stations = routes.get(line);
+        if (stations.size()<=2) {
+            throw new IllegalArgumentException(ErrorMessage.IMPOSSIBLE_DELETE_SECTION.getErrorMessage());
+        }
+    }
+
+    public static void deleteSection(Line line, Station station) {
+        List<Station> stations = routes.get(line);
+        if (!stations.contains(station)) {
+            throw new IllegalArgumentException(ErrorMessage.NO_EXIST_STATION_IN_LINE.getErrorMessage());
+        }
+        stations.remove(station);
+    }
+
+    public static Map<String, List<String>> getRoutes() {
+        Map<String, List<String>> resultRoutes = new LinkedHashMap<>();
+        for (Line line : routes.keySet()) {
+            List<String> stations = routes.get(line).stream()
+                    .map(Station::getName)
+                    .toList();
+            resultRoutes.put(line.getName(), stations);
+        }
+        return resultRoutes;
     }
 }

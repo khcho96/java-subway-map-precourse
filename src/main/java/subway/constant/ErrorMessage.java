@@ -19,7 +19,9 @@ public enum ErrorMessage {
     ALREADY_EXIST_STATION_IN_LINE("해당 노선에 이미 존재하는 역입니다."), 
     
     INDEX_FORMAT_ERROR("1 이상의 숫자를 입력해야합니다."),
-    MAX_INDEX_ERROR("%d 이하의 순서를 입력해야합니다.");
+    MAX_INDEX_ERROR("%d 이하의 순서를 입력해야합니다."),
+    IMPOSSIBLE_DELETE_SECTION("해당 노선의 역은 더이상 삭제할 수 없습니다."),
+    NO_EXIST_STATION_IN_LINE("해당 노선에 존재하지 않는 역입니다.");
 
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     private final String errorMessage;

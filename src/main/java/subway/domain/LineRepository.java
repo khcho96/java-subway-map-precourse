@@ -26,4 +26,11 @@ public class LineRepository {
         }
         lines.remove(deletedLine);
     }
+
+    public static Line getLine(Line deletedLine) {
+        return lines.stream()
+                .filter(line -> line.equals(deletedLine))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NO_EXIST_LINE.getErrorMessage()));
+    }
 }
