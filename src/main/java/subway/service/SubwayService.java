@@ -73,11 +73,15 @@ public class SubwayService {
     }
 
     public Line registerSectionWithLine(String lineName) {
-        return Line.from(lineName);
+        Line line = Line.from(lineName);
+        if (!RouteRepository.contains(line)) {
+            throw new IllegalArgumentException(ErrorMessage.NO_EXIST_LINE.getErrorMessage());
+        }
+        return line;
     }
 
     public Station validatePossibleAddStation(Line line, String stationName) {
-        Station station = Station.from(stationName);
+        Station station = StationRepository.getStation(stationName);
         if (RouteRepository.contains(line, station)) {
             throw new IllegalArgumentException(ErrorMessage.ALREADY_EXIST_STATION_IN_LINE.getErrorMessage());
         }
@@ -95,7 +99,7 @@ public class SubwayService {
     }
 
     public void deleteSection(Line line, String stationName) {
-        Station station = Station.from(stationName);
+        Station station = StationRepository.getStation(stationName);
         RouteRepository.deleteSection(line, station);
     }
 
