@@ -1,10 +1,15 @@
 package subway.util;
 
+import subway.constant.ErrorMessage;
+
 public final class Validator {
 
     private static final String NUMBER_FORMAT = "\\d+";
+    private static final String STATION_FORMAT = ".*역$";
+    private static final String LINE_FORMAT = ".*선$";
 
-    private Validator() {}
+    private Validator() {
+    }
 
     public static void validateXxx(String input) {
         input = input.strip();
@@ -12,5 +17,17 @@ public final class Validator {
 
     public static void validateCsvFormat(String input) {
         input = input.strip();
+    }
+
+    public static void validateStationFormat(String station) {
+        if (!station.matches(STATION_FORMAT)) {
+            throw new IllegalArgumentException(ErrorMessage.STATION_FORMAT_ERROR.getErrorMessage());
+        }
+    }
+
+    public static void validateLineFormat(String line) {
+        if (!line.matches(LINE_FORMAT)) {
+            throw new IllegalArgumentException(ErrorMessage.LINE_FORMAT_ERROR.getErrorMessage());
+        }
     }
 }

@@ -9,9 +9,10 @@ public final class InputParser {
     private InputParser() {
     }
 
-    public static Integer parseXxx(String rawInput) {
-        rawInput = rawInput.strip();
+    public static String parseStation(String station) {
+        station = station.strip();
 
-        return NumberConvertor.convertToNumber(rawInput);
+        Validator.validateStationFormat(station);
+        return station;
     }
 }

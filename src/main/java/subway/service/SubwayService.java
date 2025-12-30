@@ -30,6 +30,10 @@ public class SubwayService {
         }
     }
 
+    public void registerStation(String stationName) {
+        StationRepository.addStation(Station.from(stationName));
+    }
+
     // 도메인 객체 인스턴스 변수로 저장
 
     // 메서드
